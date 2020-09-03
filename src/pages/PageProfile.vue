@@ -1,6 +1,11 @@
 <template>
   <div class="flex-grid">
-    <UserProfileCard
+<!--    <UserProfileCard-->
+<!--      :user="user"-->
+<!--      :userPostsCount="userPostsCount"-->
+<!--      :userThreadsCount="userThreadsCount"-->
+<!--    />-->
+    <UserProfileCardEditor
       :user="user"
       :userPostsCount="userPostsCount"
       :userThreadsCount="userThreadsCount"
@@ -25,13 +30,15 @@
   import {mapGetters} from 'vuex'
   import PostList from '@/components/PostList'
   import UserProfileCard from '@/components/UserProfileCard'
+  import UserProfileCardEditor from '@/components/UserProfileCardEditor'
 
   import { countObjectProperties } from '@/utils'
 
   export default {
     components: {
       PostList,
-      UserProfileCard
+      UserProfileCard,
+      UserProfileCardEditor
     },
     computed: {
       ...mapGetters({
