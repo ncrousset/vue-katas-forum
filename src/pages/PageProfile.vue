@@ -61,6 +61,8 @@
   import {mapGetters} from 'vuex'
   import PostList from '@/components/PostList'
 
+  import { countObjectProperties } from '@/utils'
+
   export default {
     components: {
       PostList
@@ -71,15 +73,11 @@
       }),
 
       userThreadsCount () {
-        return this.user.threads
-          ? Object.keys(this.user.threads).length
-          : 0
+        return countObjectProperties(this.user.threads)
       },
 
       userPostsCount () {
-        return this.user.posts
-          ? Object.keys(this.user.posts).length
-          : 0
+        return countObjectProperties(this.user.posts)
       },
 
       userPosts () {
