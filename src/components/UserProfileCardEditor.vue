@@ -43,7 +43,7 @@
       </div>
 
       <div class="btn-group space-between">
-        <button class="btn-ghost">Cancel</button>
+        <button type="button" @click.prevent="cancel" class="btn-ghost">Cancel</button>
         <button type="submit" @click.prevent="save" class="btn-blue">Save</button>
       </div>
     </div>
@@ -80,6 +80,11 @@
     methods: {
       save () {
         this.$store.dispatch('updateUser', {...this.activeUser})
+        this.$router.push({name: 'Profile '})
+      },
+
+      cancel () {
+        this.$router.push({name: 'Profile '})
       }
     }
   }
