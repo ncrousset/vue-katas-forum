@@ -21,10 +21,9 @@
 
         <li class="navbar-user">
           <a href="#">
-            <img class="avatar-small" src="https://pbs.twimg.com/profile_images/881260299420041217/GMVGlDea_400x400.jpg"
-                 alt="">
+            <img class="avatar-small" :src="user.avatar " alt="">
             <span>
-                        Alex Kyriakidis
+                        {{ user.name }}
                         <img class="icon-profile" src="../assets/img/arrow-profile.svg" alt="">
                     </span>
           </a>
@@ -42,30 +41,38 @@
       </ul>
 
       <ul>
-<!--        <li class="navbar-item">-->
-<!--          <a href="index.html">Home</a>-->
-<!--        </li>-->
-<!--        <li class="navbar-item">-->
-<!--          <a href="category.html">Category</a>-->
-<!--        </li>-->
-<!--        <li class="navbar-item">-->
-<!--          <a href="forum.html">Forum</a>-->
-<!--        </li>-->
-<!--        <li class="navbar-item">-->
-<!--          <a href="thread.html">Thread</a>-->
-<!--        </li>-->
-<!--        &lt;!&ndash; Show these option only on mobile&ndash;&gt;-->
-<!--        <li class="navbar-item mobile-only">-->
-<!--          <a href="profile.html">My Profile</a>-->
-<!--        </li>-->
-<!--        <li class="navbar-item mobile-only">-->
-<!--          <a href="#">Logout</a>-->
-<!--        </li>-->
+        <!--        <li class="navbar-item">-->
+        <!--          <a href="index.html">Home</a>-->
+        <!--        </li>-->
+        <!--        <li class="navbar-item">-->
+        <!--          <a href="category.html">Category</a>-->
+        <!--        </li>-->
+        <!--        <li class="navbar-item">-->
+        <!--          <a href="forum.html">Forum</a>-->
+        <!--        </li>-->
+        <!--        <li class="navbar-item">-->
+        <!--          <a href="thread.html">Thread</a>-->
+        <!--        </li>-->
+        <!--        &lt;!&ndash; Show these option only on mobile&ndash;&gt;-->
+        <!--        <li class="navbar-item mobile-only">-->
+        <!--          <a href="profile.html">My Profile</a>-->
+        <!--        </li>-->
+        <!--        <li class="navbar-item mobile-only">-->
+        <!--          <a href="#">Logout</a>-->
+        <!--        </li>-->
       </ul>
     </nav>
   </header>
 </template>
 
 <script>
-  export default {}
+  import {mapGetters} from 'vuex'
+
+  export default {
+    computed: {
+      ...mapGetters({
+        'user': 'authUser'
+      })
+    }
+  }
 </script>
