@@ -33,18 +33,21 @@ export default new Vuex.Store({
     },
 
     createThread ({state, commit, dispatch}, {text, title, forumId}) {
-      const publishedAt = Math.floor(Date.now() / 1000)
-      const userId = state.authId
-      const threadId = 'greatThread' + Math.random()
+      return new Promise((resolve, reject) => {
+        const publishedAt = Math.floor(Date.now() / 1000)
+        const userId = state.authId
+        const threadId = 'greatThread' + Math.random()
 
-      const thread = {'.key': threadId, title, forumId, publishedAt, userId}
+        const thread = {'.key': threadId, title, forumId, publishedAt, userId}
 
-      commit('setThread', {threadId, thread})
+        commit('setThread', {threadId, thread})
 
-      commit('appendThreadToForum', {forumId, threadId})
-      commit('appendThreadToUser', {forumId, userId})
+        commit('appendThreadToForum', {forumId, threadId})
+        commit('appendThreadToUser', {forumId, userId})
 
-      dispatch('createPost', {text, threadId})
+        dispatch('createPost', {text, threadId})
+        resolve(state.threads[threadId])
+      })
     }
   },
   mutations: {
