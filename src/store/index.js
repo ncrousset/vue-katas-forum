@@ -26,6 +26,9 @@ export default new Vuex.Store({
       commit('setPost', {post, postId})
       commit('appendPostToThread', {threadId: post.threadId, postId})
       commit('appendPostToUser', {userId: post.userId, postId})
+
+      // eslint-disable-next-line new-cap
+      return Promise.resolve(state.posts[postId])
     },
 
     updateThread ({commit, state}, {title, text, id}) {
@@ -43,10 +46,6 @@ export default new Vuex.Store({
       })
     },
 
-    updateUser ({commit}, user) {
-      commit('setUser', {userId: user['.key'], user})
-    },
-
     createThread ({state, commit, dispatch}, {text, title, forumId}) {
       return new Promise((resolve, reject) => {
         const publishedAt = Math.floor(Date.now() / 1000)
@@ -61,8 +60,15 @@ export default new Vuex.Store({
         commit('appendThreadToUser', {forumId, userId})
 
         dispatch('createPost', {text, threadId})
+          .then(post => {
+            commit('setThread', {threadId, thread: {...thread, firstPostId: post['.key']}})
+          })
         resolve(state.threads[threadId])
       })
+    },
+
+    updateUser ({commit}, user) {
+      commit('setUser', {userId: user['.key'], user})
     }
   },
   mutations: {
