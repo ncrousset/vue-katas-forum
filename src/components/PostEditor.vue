@@ -1,10 +1,9 @@
 <template>
   <form @submit.prevent="save">
-    <div class="form-group">
+    <div class="form-group form-control">
         <textarea
           name=""
           id=""
-          cols="30"
           rows="10"
           class="form-input"
           v-model="text"
