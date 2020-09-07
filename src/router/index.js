@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/pages/PageHome'
 import ThreadShow from '@/pages/PageThreadShow'
 import ThreadCreate from '@/pages/PageThreadCreate'
+import ThreadEdit from '@/pages/PageThreadEdit'
 import NotFound from '@/pages/PageNotFound'
 import Forum from '@/pages/PageForum'
 import Category from '@/pages/PageCategory'
@@ -39,6 +40,12 @@ export default new Router({
       path: '/thread/:id',
       name: 'ThreadShow',
       component: ThreadShow,
+      props: true
+    },
+    {
+      path: '/thread/:id/edit',
+      name: 'ThreadEdit',
+      component: ThreadEdit,
       props: true
     },
     {
