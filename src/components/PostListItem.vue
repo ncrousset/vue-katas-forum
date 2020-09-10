@@ -16,7 +16,8 @@
         <div>
           {{post.text}}
         </div>
-        <a @click.prevent="editing = true" href="#" style="margin-left: auto;" class="link-unstyled" title="Make a change"><i class="fa fa-pencil"></i></a>
+        <a @click.prevent="editing = true" href="#" style="margin-left: auto;" class="link-unstyled"
+           title="Make a change"><i class="fa fa-pencil"></i></a>
       </template>
 
       <div v-else>
@@ -38,7 +39,6 @@
 </template>
 
 <script>
-  import {countObjectProperties} from '@/utils'
   import PostEditor from './PostEditor'
 
   export default {
@@ -63,8 +63,9 @@
       user () {
         return this.$store.state.users[this.post.userId]
       },
+
       userPostsCount () {
-        return countObjectProperties(this.user.posts)
+        return this.$store.getters.userPostsCount(this.post.userId)
       }
     }
   }
