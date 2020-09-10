@@ -11,7 +11,7 @@
       </router-link>
     </h1>
     <p>
-      By <a href="#" class="link-unstyled">Robin</a>,
+      By <a href="#" class="link-unstyled">{{user.name}}</a>,
       <AppDate :timestamp="thread.publishedAt"/>
       .
       <span style="float:right; margin-top: 2px;"
@@ -48,6 +48,10 @@
 
       repliesCount () {
         return this.$store.getters.threadRepliesCount(this.thread['.key'])
+      },
+
+      user () {
+        return this.$store.state.users[this.thread.userId]
       },
 
       contributorsCount () {
