@@ -72,7 +72,7 @@
         .then(thread => {
           // fetch user
           this.$store.dispatch('fetchUser', {id: thread.userId})
-          this.$store.dispatch('fechPosts', {ids: Object.keys(thread.posts)})
+          this.$store.dispatch('fetchPosts', {ids: Object.keys(thread.posts)})
             .then(posts => {
               posts.forEach(post => {
                 this.$store.dispatch('fetchUser', {id: post.userId})
